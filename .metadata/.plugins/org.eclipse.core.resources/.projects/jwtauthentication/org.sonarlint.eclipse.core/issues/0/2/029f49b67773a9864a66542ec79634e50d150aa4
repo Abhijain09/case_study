@@ -1,0 +1,19 @@
+
+o
+java:S5344:">Don't use the default "PasswordEncoder" relying on plain-text.(«Í£nHRCRITICALZVULNERABILITY
+g
+java:S1874?";Remove this use of "NoOpPasswordEncoder"; it is deprecated.(å‰öHŸRMINORZ
+CODE_SMELL
+f
+java:S1161C":Add the "@Override" annotation above this method signature(È†‹H RMAJORZ
+CODE_SMELL
+§
+java:S1128
+"{Remove this unused import 'org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity'.(Ô¦øH¢RMINORZ
+CODE_SMELL
+Œ
+java:S1128"[Remove this unused import 'org.springframework.web.servlet.config.annotation.CorsRegistry'.(âÁ’©şÿÿÿÿH¤RMINORZ
+CODE_SMELL
+
+java:S1128"_Remove this unused import 'org.springframework.web.servlet.config.annotation.WebMvcConfigurer'.(’µ¥ÊÿÿÿÿÿH¦RMINORZ
+CODE_SMELL

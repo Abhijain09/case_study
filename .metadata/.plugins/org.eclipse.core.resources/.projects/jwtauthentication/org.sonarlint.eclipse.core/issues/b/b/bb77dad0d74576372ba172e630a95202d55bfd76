@@ -1,0 +1,24 @@
+
+q	java:S112*"FDefine and throw a dedicated exception instead of using a generic one.(ö²ÚÜHRMAJORZ
+CODE_SMELL
+q	java:S112."FDefine and throw a dedicated exception instead of using a generic one.(ö²ÚÜH‘RMAJORZ
+CODE_SMELL
+v	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(¡ï¸ÓıÿÿÿÿH’RMAJORZ
+CODE_SMELL
+Z
+java:S1452"&Remove usage of generic wildcard type.(¡ï¸ÓıÿÿÿÿH“RCRITICALZ
+CODE_SMELL
+v
+java:S4488"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(™ŞŸ¸H”RMINORZ
+CODE_SMELL
+d	java:S106!"9Replace this use of System.out or System.err by a logger.(øÙŞH–RMAJORZ
+CODE_SMELL
+i	java:S106""9Replace this use of System.out or System.err by a logger.(Â­ÔäüÿÿÿÿH—RMAJORZ
+CODE_SMELL
+u
+java:S2147+"DCombine this catch with the one at line 40, which has the same body.(ÛÅÂŠÿÿÿÿÿH˜RMINORZ
+CODE_SMELL
+i	java:S1066"9Replace this use of System.out or System.err by a logger.(–ËÕ„ùÿÿÿÿHœRMAJORZ
+CODE_SMELL
+l	java:S1258"<This block of commented-out lines of code should be removed.(â­ùÿÿÿÿÿHRMAJORZ
+CODE_SMELL

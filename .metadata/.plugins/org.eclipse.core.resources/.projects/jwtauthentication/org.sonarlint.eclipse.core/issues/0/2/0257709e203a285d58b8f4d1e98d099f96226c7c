@@ -1,0 +1,6 @@
+
+d	java:S106G"9Replace this use of System.out or System.err by a logger.(‰„Š¢HÅRMAJORZ
+CODE_SMELL
+–
+java:S1128	"eRemove this unused import 'org.springframework.security.web.authentication.WebAuthenticationDetails'.(˜öÃˆýÿÿÿÿHÆRMINORZ
+CODE_SMELL

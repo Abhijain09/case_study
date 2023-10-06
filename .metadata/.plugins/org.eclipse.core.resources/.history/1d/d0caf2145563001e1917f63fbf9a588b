@@ -1,0 +1,138 @@
+package com.registration.controller;
+
+
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.registration.exception.UserNotFoundException;
+import com.registration.model.User;
+import com.registration.services.UserServices;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@WebMvcTest(UserController.class)
+public class UserControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private UserServices userServices;
+
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
+
+    @Test
+    public void testGetAllUsers() throws Exception {
+        List<User> users = new ArrayList<>();
+        // Populate 'users' with test data
+
+        when(userServices.getUsers()).thenReturn(users);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/users/")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$").isArray())
+                .andExpect(MockMvcResultMatchers.jsonPath("$").isEmpty());
+    }
+
+    @Test
+    public void testGetUserById() throws Exception {
+        String username = "testUsername";
+        User user = new User(); // Create a test user
+
+        when(userServices.getUserByUsername(username)).thenReturn(Optional.of(user));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/users/{username}", username)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testGetUserById_UserNotFound() throws Exception {
+        String username = "nonExistentUsername";
+
+        when(userServices.getUserByUsername(username)).thenReturn(Optional.empty());
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/users/{username}", username)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void testAddUser() throws Exception {
+        User newUser = new User(); // Create a test user
+
+        when(userServices.addUser(any(User.class))).thenReturn(newUser);
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/users/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper().writeValueAsString(newUser)))
+                .andExpect(status().isCreated());
+    }
+
+    @Test
+    public void testUpdateUser() throws Exception {
+        String username = "testUsername";
+        User updatedUser = new User(); // Create an updated user
+
+        when(userServices.updateUser(eq(username), any(User.class))).thenReturn(updatedUser);
+
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/users/{username}", username)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper().writeValueAsString(updatedUser)))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testUpdateUser_UserNotFound() throws Exception {
+        String username = "nonExistentUsername";
+        User updatedUser = new User(); // Create an updated user
+
+        when(userServices.updateUser(eq(username), any(User.class))).thenThrow(UserNotFoundException.class);
+
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/users/{username}", username)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper().writeValueAsString(updatedUser)))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void testDeleteUser() throws Exception {
+        String username = "testUsername";
+
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1/users/{username}", username)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNoContent());
+
+        verify(userServices, times(1)).deleteUserByUsername(username);
+    }
+
+//    @Test
+//    public void testDeleteUser_UserNotFound() throws Exception {
+//        String username = "nonExistentUsername";
+//
+//        doThrow(UserNotFoundException.class).when(userServices).deleteUserByUsername(username);
+//
+//        mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1/users/{username}", username)
+//                .contentType(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isNotFound());
+//    }
+}
