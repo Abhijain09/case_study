@@ -4683,3 +4683,37 @@ java.lang.ClassNotFoundException: org.springframework.ide.vscode.commons.protoco
 	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-10-07 16:26:27.938
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\admin'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-10-07 16:26:29.585
+!MESSAGE Boot project ADDED: ApiGateway
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-10-07 16:26:29.587
+!MESSAGE Starting Boot LS...
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-10-07 16:26:29.595
+!MESSAGE Started Boot LS process
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-10-07 16:26:29.875
+!MESSAGE Boot project ADDED: jwtauthentication
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-10-07 16:26:29.999
+!MESSAGE Boot project ADDED: orderservice
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-10-07 16:26:30.204
+!MESSAGE Boot project ADDED: paymentservice
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-10-07 16:26:30.335
+!MESSAGE Boot project ADDED: productservice
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-10-07 16:26:30.336
+!MESSAGE Boot project ADDED: registeration
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-10-07 16:26:30.405
+!MESSAGE Boot project ADDED: service-registry
