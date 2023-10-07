@@ -1,5 +1,5 @@
 INDEX VERSION 1.134+E:\spring-tool-suite-4-4.19.0.RELEASE-e4.28.0-win32.win32.x86_64.self-extracting\case_study\.metadata\.plugins\org.eclipse.jdt.core
-1442206907.index
+2385442263.index
 3927532312.index
 2344547501.index
 174766513.index
@@ -251,7 +251,6 @@ INDEX VERSION 1.134+E:\spring-tool-suite-4-4.19.0.RELEASE-e4.28.0-win32.win32.x8
 1195300430.index
 3591882433.index
 3695963624.index
-3543617789.index
 292244351.index
 4130479198.index
 2705064754.index
@@ -425,4 +424,4 @@ INDEX VERSION 1.134+E:\spring-tool-suite-4-4.19.0.RELEASE-e4.28.0-win32.win32.x8
 1682680140.index
 1837740906.index
 3547735242.index
-2385442263.index
+1442206907.index

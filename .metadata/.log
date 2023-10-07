@@ -4717,3 +4717,18 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.springframework.tooling.boot.ls 1 0 2023-10-07 16:26:30.405
 !MESSAGE Boot project ADDED: service-registry
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-10-07 16:28:44.616
+!MESSAGE Classpath changed for project: registeration
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-10-07 16:29:01.489
+!MESSAGE Classpath changed for project: registeration
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-10-07 16:29:34.847
+!MESSAGE Classpath changed for project: registeration
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-10-07 16:29:56.297
+!MESSAGE Classpath changed for project: registeration
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-10-07 16:30:12.409
+!MESSAGE Classpath changed for project: registeration

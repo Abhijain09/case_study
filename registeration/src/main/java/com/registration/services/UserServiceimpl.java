@@ -37,23 +37,23 @@ public class UserServiceimpl implements UserServices {
 	@Override
 	public User updateUser(String username, User updatedUser) throws UserNotFoundException {
 		// TODO Auto-generated method stub
-		Optional<User> existingUser = csd.findByUsername(username);
-        if (!existingUser.isPresent()) {
-            throw new UserNotFoundException("User Not found with "+ username);
-        }
-		updatedUser.setUsername(username);
-        return csd.save(updatedUser);
+		User existingUser = csd.findByUsername(username).orElseThrow(()->new UserNotFoundException("User Not found with "+ username));
+        
+		existingUser.setAddress(updatedUser.getAddress());
+		existingUser.setAge(updatedUser.getAge());
+		existingUser.setEmail(updatedUser.getEmail());
+		existingUser.setPassword(updatedUser.getPassword());
+		existingUser.setPhoneNumber(updatedUser.getPhoneNumber());
+		existingUser.setName(updatedUser.getName());       
+    	User updated = csd.save(existingUser);
+    	return updatedUser;
 	}
 
 	@Override
 	public void deleteUserByUsername(String username) throws UserNotFoundException {
 		// TODO Auto-generated method stub
-		 Optional<User> existingProduct = csd.findByUsername(username);
-	        if (!existingProduct.isPresent()) {
-	            throw new UserNotFoundException("User Not found with "+ username);
-	        }
-
-	        csd.deleteByUsername(username);
+		 User existingProduct = csd.findByUsername(username).orElseThrow(()->new UserNotFoundException("User Not found with "+ username));
+	        csd.delete(existingProduct);
 	    }
 
 
