@@ -17,7 +17,12 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-    @Override
+    public CustomUserDetailsService(UserRepository userRepository2) {
+		// TODO Auto-generated constructor stub
+    	this.userRepository=userRepository2;
+	}
+
+	@Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 
         final User user = this.userRepository.findByUsername(userName);
@@ -27,8 +32,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         } else {
             return new CustomUserDetails(user);
         }
-
-
         
 
     }

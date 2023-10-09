@@ -30,40 +30,40 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	@NotEmpty(message = "Name must not be Empty")
-    @Size(min = 4 , message = "Name must be min of 4 characters !!")
+//	@NotEmpty(message = "Name must not be Empty")
+//    @Size(min = 4 , message = "Name must be min of 4 characters !!")
 	private String name;
 	
 
 	private int age;
 	
-	@NotEmpty(message = "Invalid Phone number: Empty number")
-	@NotNull(message = "Invalid Phone number: Number is NULL")
-	@Pattern(regexp = "\\d{10}", message = "Invalid phone number")
+//	@NotEmpty(message = "Invalid Phone number: Empty number")
+//	@NotNull(message = "Invalid Phone number: Number is NULL")
+//	@Pattern(regexp = "\\d{10}", message = "Invalid phone number")
 	private String phoneNumber;
 	 
 	
-	@NotEmpty
-	@Size(min = 3 , max = 50 , message = "Address must be min of 20 chars and max of 50 characters")
+//	@NotEmpty
+//	@Size(min = 3 , max = 50 , message = "Address must be min of 20 chars and max of 50 characters")
 	private String address;
 	
-	@NotNull
-	@NotEmpty(message = "Enter the gender cannot be empty")
+//	@NotNull
+//	@NotEmpty(message = "Enter the gender cannot be empty")
 	private String gender;
 	
-	@NotNull(message = "Username can not be null")
-	@NotEmpty(message = "Username must be filled")
-	@Column(unique = true)
-    @Size(min = 4 , message = "Usename is not valid / User is already exist")
+//	@NotNull(message = "Username can not be null")
+//	@NotEmpty(message = "Username must be filled")
+//	@Column(unique = true)
+//    @Size(min = 4 , message = "Usename is not valid / User is already exist")
 	private String username;
 	
-	@NotEmpty
-	@Size(min = 3 , max = 10 , message = "Password must be min of 3 chars and max of 10 characters")
+//	@NotEmpty
+//	@Size(min = 3 , max = 10 , message = "Password must be min of 3 chars and max of 10 characters")
 	private String password;
 	
-	@NotNull(message ="E-mail cannot be NULL")
-	@NotEmpty(message ="E-mail cannot be Empty")
-	@Email(message = "Email address is not valid !!")
+//	@NotNull(message ="E-mail cannot be NULL")
+//	@NotEmpty(message ="E-mail cannot be Empty")
+//	@Email(message = "Email address is not valid !!")
 	private String email;
 		
 	

@@ -1,24 +1,27 @@
 
-q	java:S112*"FDefine and throw a dedicated exception instead of using a generic one.(ö²ÚÜHRMAJORZ
+q	java:S1129"FDefine and throw a dedicated exception instead of using a generic one.(ö²ÚÜHÓRMAJORZ
 CODE_SMELL
-q	java:S112."FDefine and throw a dedicated exception instead of using a generic one.(ö²ÚÜH‘RMAJORZ
+v	java:S112."FDefine and throw a dedicated exception instead of using a generic one.(¡ï¸ÓıÿÿÿÿHÍRMAJORZ
 CODE_SMELL
-v	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(¡ï¸ÓıÿÿÿÿH’RMAJORZ
+d	java:S1060"9Replace this use of System.out or System.err by a logger.(øÙŞHÈRMAJORZ
+CODE_SMELL
+l	java:S125G"<This block of commented-out lines of code should be removed.(â­ùÿÿÿÿÿHÉRMAJORZ
+CODE_SMELL
+i	java:S1061"9Replace this use of System.out or System.err by a logger.(Â­ÔäüÿÿÿÿHÒRMAJORZ
 CODE_SMELL
 Z
-java:S1452"&Remove usage of generic wildcard type.(¡ï¸ÓıÿÿÿÿH“RCRITICALZ
+java:S1452."&Remove usage of generic wildcard type.(¡ï¸ÓıÿÿÿÿHÔRCRITICALZ
+CODE_SMELL
+q	java:S112="FDefine and throw a dedicated exception instead of using a generic one.(ö²ÚÜHÇRMAJORZ
 CODE_SMELL
 v
-java:S4488"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(™ŞŸ¸H”RMINORZ
+java:S4488-"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(™ŞŸ¸HÊRMINORZ
 CODE_SMELL
-d	java:S106!"9Replace this use of System.out or System.err by a logger.(øÙŞH–RMAJORZ
-CODE_SMELL
-i	java:S106""9Replace this use of System.out or System.err by a logger.(Â­ÔäüÿÿÿÿH—RMAJORZ
+i	java:S106E"9Replace this use of System.out or System.err by a logger.(–ËÕ„ùÿÿÿÿHÌRMAJORZ
 CODE_SMELL
 u
-java:S2147+"DCombine this catch with the one at line 40, which has the same body.(ÛÅÂŠÿÿÿÿÿH˜RMINORZ
+java:S2147:"DCombine this catch with the one at line 55, which has the same body.(ÛÅÂŠÿÿÿÿÿHÎRMINORZ
 CODE_SMELL
-i	java:S1066"9Replace this use of System.out or System.err by a logger.(–ËÕ„ùÿÿÿÿHœRMAJORZ
-CODE_SMELL
-l	java:S1258"<This block of commented-out lines of code should be removed.(â­ùÿÿÿÿÿHRMAJORZ
+i
+java:S1135#"2Complete the task associated to this TODO comment.(ƒŠ® úÿÿÿÿ8Ê¯é²±1HõRINFOZ
 CODE_SMELL

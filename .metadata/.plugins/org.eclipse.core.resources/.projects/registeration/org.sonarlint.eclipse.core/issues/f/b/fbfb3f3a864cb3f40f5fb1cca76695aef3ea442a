@@ -1,0 +1,9 @@
+
+ƒ
+java:S1128	"PRemove this unused import 'org.springframework.validation.annotation.Validated'.(¸ÒÖƒ8•«í¬±1H‹RMINORZ
+CODE_SMELL
+‘
+java:S2293P"YReplace the type specification in this constructor call with the diamond operator ("<>").(¦±„úÿÿÿÿ8ªÖ©Î°1H½RMINORZ
+CODE_SMELL
+s	java:S1255"<This block of commented-out lines of code should be removed.(ñ¥ùšøÿÿÿÿ8øÁõ¥±1HRMAJORZ
+CODE_SMELL

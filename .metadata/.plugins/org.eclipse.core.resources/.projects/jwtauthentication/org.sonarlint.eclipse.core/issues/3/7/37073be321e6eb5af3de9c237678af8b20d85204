@@ -1,0 +1,17 @@
+
+`
+java:S1128"/Remove this unused import 'com.jwt.model.User'.(±ßÕŽùÿÿÿÿH°RMINORZ
+CODE_SMELL
+d
+java:S1128"8Remove this unused import 'com.jwt.repo.UserRepository'.(ô’žÛH²RMINORZ
+CODE_SMELL
+„
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡ž¸ÎùÿÿÿÿH´RMINORZ
+CODE_SMELL
+s
+java:S1128"GRemove this unused import 'org.springframework.boot.CommandLineRunner'.(È—ÿÅH¶RMINORZ
+CODE_SMELL
+^
+java:S1128
+"-Remove this unused import 'java.util.Random'.(èøÉ›ùÿÿÿÿH¸RMINORZ
+CODE_SMELL

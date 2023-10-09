@@ -1,0 +1,124 @@
+package com.microservice.paymentservice.service;
+
+import com.microservice.paymentservice.exception.PaymentServiceCustomException;
+import com.microservice.paymentservice.model.TransactionDetails;
+import com.microservice.paymentservice.utils.PaymentMode;
+import com.microservice.paymentservice.payload.PaymentRequest;
+import com.microservice.paymentservice.payload.PaymentResponse;
+import com.microservice.paymentservice.repository.TransactionDetailsRepository;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import java.time.Instant;
+import java.util.Optional;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+
+class PaymentServiceImplTest {
+
+	@InjectMocks
+    private PaymentServiceImpl paymentService;
+
+    @Mock
+    private TransactionDetailsRepository transactionDetailsRepository;
+
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
+    }
+
+    @Test
+    public void testDoPayment() {
+        // Create a sample PaymentRequest
+        PaymentRequest paymentRequest = new PaymentRequest();
+        paymentRequest.setPaymentMode(PaymentMode.CREDIT_CARD);
+        paymentRequest.setOrderId(123);
+        paymentRequest.setReferenceNumber("REF123");
+        paymentRequest.setAmount(100);
+
+        // Create a sample TransactionDetails
+        TransactionDetails savedTransactionDetails = TransactionDetails.builder()
+                .paymentDate(Instant.now())
+                .paymentMode(paymentRequest.getPaymentMode().name())
+                .paymentStatus("SUCCESS")
+                .orderId(paymentRequest.getOrderId())
+                .referenceNumber(paymentRequest.getReferenceNumber())
+                .amount(paymentRequest.getAmount())
+                .id(1L) // Simulate the ID assigned by the repository
+                .build();
+
+        // Stub the behavior of the repository's save method
+        when(transactionDetailsRepository.save(any(TransactionDetails.class))).thenReturn(savedTransactionDetails);
+
+        // Call the doPayment method
+        long paymentId = paymentService.doPayment(paymentRequest);
+
+        // Verify that the save method was called with the correct argument
+        ArgumentCaptor<TransactionDetails> captor = ArgumentCaptor.forClass(TransactionDetails.class);
+        verify(transactionDetailsRepository).save(captor.capture());
+        TransactionDetails capturedTransactionDetails = captor.getValue();
+
+        // Assert the result
+        assertEquals(savedTransactionDetails.getId(), paymentId);
+        assertEquals(paymentRequest.getPaymentMode().name(), capturedTransactionDetails.getPaymentMode());
+        assertEquals(paymentRequest.getOrderId(), capturedTransactionDetails.getOrderId());
+        assertEquals(paymentRequest.getReferenceNumber(), capturedTransactionDetails.getReferenceNumber());
+        assertEquals(paymentRequest.getAmount(), capturedTransactionDetails.getAmount());
+    }
+
+    @Test
+    public void testGetPaymentDetailsByOrderId() {
+        // Create a sample orderId
+        long orderId = 123;
+
+        // Create a sample TransactionDetails
+        TransactionDetails transactionDetails = TransactionDetails.builder()
+                .paymentDate(Instant.now())
+                .paymentMode(PaymentMode.CREDIT_CARD.name())
+                .paymentStatus("SUCCESS")
+                .orderId(orderId)
+                .referenceNumber("REF123")
+                .amount(100)
+                .id(1L) // Simulate the ID assigned by the repository
+                .build();
+
+        // Stub the behavior of the repository's findByOrderId method
+        when(transactionDetailsRepository.findByOrderId(orderId)).thenReturn(Optional.of(transactionDetails));
+
+        // Call the getPaymentDetailsByOrderId method
+        PaymentResponse paymentResponse = paymentService.getPaymentDetailsByOrderId(orderId);
+
+        // Verify that the findByOrderId method was called with the correct argument
+        verify(transactionDetailsRepository).findByOrderId(orderId);
+
+        // Assert the result
+        assertEquals(orderId, paymentResponse.getOrderId());
+        assertEquals(PaymentMode.CREDIT_CARD, paymentResponse.getPaymentMode());
+        assertEquals(transactionDetails.getPaymentDate(), paymentResponse.getPaymentDate());
+        assertEquals(transactionDetails.getPaymentStatus(), paymentResponse.getStatus());
+        assertEquals(transactionDetails.getAmount(), paymentResponse.getAmount());
+    }
+
+    @Test
+    public void testGetPaymentDetailsByOrderIdNotFound() {
+        // Create a sample orderId that does not exist in the repository
+        long orderId = 456;
+
+        // Stub the behavior of the repository's findByOrderId method to return an empty Optional
+        when(transactionDetailsRepository.findByOrderId(orderId)).thenReturn(Optional.empty());
+
+        // Call the getPaymentDetailsByOrderId method and expect a PaymentServiceCustomException
+        PaymentServiceCustomException exception = assertThrows(
+                PaymentServiceCustomException.class,
+                () -> paymentService.getPaymentDetailsByOrderId(orderId)
+        );
+
+        // Verify that the exception message and code match
+        assertEquals("TransactionDetails with given id not found", exception.getMessage());
+        assertEquals("TRANSACTION_NOT_FOUND", exception.getErrorCode());
+    }
+}

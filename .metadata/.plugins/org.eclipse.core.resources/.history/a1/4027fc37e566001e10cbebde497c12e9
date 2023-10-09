@@ -1,0 +1,150 @@
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import com.registration.exception.UserNotFoundException;
+import com.registration.model.User;
+import com.registration.response.ApiResponse;
+import com.registration.services.UserServices;
+
+
+public class UserControllerTest{
+	
+	@InjectMocks
+    private UserController userController;
+
+    @Mock
+    private UserServices userServices;
+
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
+
+    @Test
+    public void testGetAllUser() {
+        // Arrange
+        List<User> userList = new ArrayList<>();
+        userList.add(new User(1, "John", 30, "john@example.com", "1234567890", "Address 1", "Male", "john123", "password"));
+        userList.add(new User(2, "Jane", 25, "jane@example.com", "9876543210", "Address 2", "Female", "jane123", "password"));
+
+        when(userServices.getUsers()).thenReturn(userList);
+
+        // Act
+        ResponseEntity<List<User>> response = userController.getAllUser();
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(2, response.getBody().size());
+    }
+
+    @Test
+    public void testGetUserByUsername() {
+        // Arrange
+        String username = "john123";
+        User user = new User(1, "John", 30, "john@example.com", "1234567890", "Address 1", "Male", username, "password");
+
+        when(userServices.getUserByUsername(username)).thenReturn(Optional.of(user));
+
+        // Act
+        ResponseEntity<User> response = userController.getUserByUsername(username);
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(user, response.getBody());
+    }
+
+    @Test
+    public void testGetUserByUsername_UserNotFound() {
+        // Arrange
+        String username = "nonexistentUser";
+
+        when(userServices.getUserByUsername(username)).thenReturn(Optional.empty());
+
+        // Act
+        ResponseEntity<User> response = userController.getUserByUsername(username);
+
+        // Assert
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertNull(response.getBody());
+    }
+
+    @Test
+    public void testAddUser() {
+        // Arrange
+        User newUser = new User(3, "Alice", 28, "alice@example.com", "5555555555", "Address 3", "Female", "alice123", "password");
+
+        when(userServices.addUser(newUser)).thenReturn(newUser);
+
+        // Act
+        ResponseEntity<User> response = userController.addUser(newUser);
+
+        // Assert
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertEquals(newUser, response.getBody());
+    }
+
+    @Test
+    public void testUpdateUser() throws UserNotFoundException {
+        // Arrange
+        String username = "john123";
+        User updatedUser = new User(1, "John Updated", 32, "john@example.com", "1234567890", "New Address", "Male", username, "newPassword");
+
+        when(userServices.updateUser(username, updatedUser)).thenReturn(updatedUser);
+
+        // Act
+        ResponseEntity<User> response = userController.updateUser(username, updatedUser);
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(updatedUser, response.getBody());
+    }
+
+    @Test
+    public void testUpdateUser_UserNotFound() throws UserNotFoundException {
+        // Arrange
+        String username = "nonexistentUser";
+        User updatedUser = new User(1, "John Updated", 32, "john@example.com", "1234567890", "New Address", "Male", username, "newPassword");
+
+        when(userServices.updateUser(username, updatedUser)).thenThrow(UserNotFoundException.class);
+
+        // Act and Assert
+        assertThrows(UserNotFoundException.class, () -> userController.updateUser(username, updatedUser));
+    }
+
+    @Test
+    public void testDeleteProductByUserName() throws UserNotFoundException {
+        // Arrange
+        String username = "john123";
+
+        // Act
+        ResponseEntity<ApiResponse> response = userController.deleteProductByUserName(username);
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals("User deleted Successfully", response.getBody().getMessage());
+    }
+
+    @Test
+    public void testDeleteProductByUserName_UserNotFound() throws UserNotFoundException {
+        // Arrange
+        String username = "nonexistentUser";
+
+        doThrow(UserNotFoundException.class).when(userServices).deleteUserByUsername(username);
+
+        // Act and Assert
+        assertThrows(UserNotFoundException.class, () -> userController.deleteProductByUserName(username));
+    }
+	
+	
+}

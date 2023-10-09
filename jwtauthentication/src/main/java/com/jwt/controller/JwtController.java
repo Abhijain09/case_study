@@ -27,7 +27,22 @@ public class JwtController {
     @Autowired
     private JwtUtil jwtUtil;
 
-    @RequestMapping(value = "/token", method = RequestMethod.POST)
+    
+    
+
+	public JwtController(AuthenticationManager authenticationManager,
+			CustomUserDetailsService customUserDetailsService, JwtUtil jwtUtil) {
+		// TODO Auto-generated constructor stub
+		this.authenticationManager=authenticationManager;
+		this.jwtUtil=jwtUtil;
+		this.customUserDetailsService=customUserDetailsService;
+		
+	}
+
+
+
+
+	@RequestMapping(value = "/token", method = RequestMethod.POST)
     public ResponseEntity<?> generateToken(@RequestBody JwtRequest jwtRequest) throws Exception {
 
         System.out.println("Inside Controller");

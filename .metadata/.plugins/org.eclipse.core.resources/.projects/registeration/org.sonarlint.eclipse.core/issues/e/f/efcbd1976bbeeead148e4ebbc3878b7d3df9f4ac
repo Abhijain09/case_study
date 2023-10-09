@@ -1,6 +1,22 @@
 
-l	java:S107Z"AConstructor has 8 parameters, which is greater than 7 authorized.(¦ª¿“HºRMAJORZ
+a
+java:S1128".Remove this unused import 'java.util.Objects'.(¼¸õ›8Òÿ¬Î°1HÅRMINORZ
 CODE_SMELL
-b
-java:S1135h"2Complete the task associated to this TODO comment.(ƒŠ® úÿÿÿÿH»RINFOZ
+i
+java:S1128"7Remove this unused import 'jakarta.persistence.Column'.(Ó‰ÙE8¸ë¬±1HöRMINORZ
+CODE_SMELL
+y
+java:S1128"ARemove this unused import 'jakarta.validation.constraints.Email'.(Öï¤Âıÿÿÿÿ8¸ë¬±1HøRMINORZ
+CODE_SMELL
+w
+java:S1128"DRemove this unused import 'jakarta.validation.constraints.NotEmpty'.(µÇî±8¸ë¬±1HúRMINORZ
+CODE_SMELL
+{
+java:S1128"CRemove this unused import 'jakarta.validation.constraints.NotNull'.(Àª•ıÿÿÿÿ8¸ë¬±1HüRMINORZ
+CODE_SMELL
+{
+java:S1128"CRemove this unused import 'jakarta.validation.constraints.Pattern'.(Îá˜ãúÿÿÿÿ8¸ë¬±1HşRMINORZ
+CODE_SMELL
+s
+java:S1128"@Remove this unused import 'jakarta.validation.constraints.Size'.(çÀ…Í8¸ë¬±1H€RMINORZ
 CODE_SMELL

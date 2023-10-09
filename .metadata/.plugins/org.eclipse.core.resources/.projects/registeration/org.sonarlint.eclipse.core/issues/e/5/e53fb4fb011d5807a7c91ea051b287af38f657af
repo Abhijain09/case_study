@@ -1,17 +1,19 @@
 
-b
-java:S11352"2Complete the task associated to this TODO comment.(» æžÿÿÿÿÿH³
-RINFOZ
+s
+java:S18540";Remove this useless assignment to local variable "updated".(¶Ý´‹ùÿÿÿÿ8³Û«Î°1H˜RMAJORZ
 CODE_SMELL
 b
-java:S1135!"2Complete the task associated to this TODO comment.(» æžÿÿÿÿÿH´
-RINFOZ
-CODE_SMELL
-\
-java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒHµ
-RMINORZ
+java:S11356"2Complete the task associated to this TODO comment.(» æžÿÿÿÿÿH™RINFOZ
 CODE_SMELL
 b
-java:S1135'"2Complete the task associated to this TODO comment.(» æžÿÿÿÿÿH·
-RINFOZ
+java:S1135!"2Complete the task associated to this TODO comment.(» æžÿÿÿÿÿHšRINFOZ
+CODE_SMELL
+b
+java:S1135'"2Complete the task associated to this TODO comment.(» æžÿÿÿÿÿH›RINFOZ
+CODE_SMELL
+d
+java:S14810",Remove this unused "updated" local variable.(¶Ý´‹ùÿÿÿÿ8³Û«Î°1HœRMINORZ
+CODE_SMELL
+c
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8Ôÿ°­±1HžRMINORZ
 CODE_SMELL
